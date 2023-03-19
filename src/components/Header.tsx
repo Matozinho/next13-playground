@@ -24,10 +24,6 @@ export const Header = () => {
           <Button variant="outlined">Home</Button>
         </Link>
 
-        <Link href="/loading-test">
-          <Button variant="outlined">Loading</Button>
-        </Link>
-
         <Link href="/clinica/1/sobre">
           <Button variant="outlined">Sobre</Button>
         </Link>
