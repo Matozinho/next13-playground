@@ -1,6 +1,6 @@
-import "./globals.css";
-import { ThemeProvider, Stack, Header } from "@/components";
+import { Header, Stack, ThemeProvider } from "@/components";
 import { theme } from "@/config";
+import "./globals.css";
 
 export const metadata = {
   title: "Create Next App",
@@ -16,11 +16,9 @@ export default function RootLayout({
     <html>
       <body>
         <ThemeProvider theme={theme}>
-          <Stack sx={{ paddingLeft: { xs: "102px" } }}>
+          <Stack>
             <Header />
-            <Stack sx={{ padding: { xs: "16px", md: "24px" } }}>
-              {children}
-            </Stack>
+            <Stack>{children}</Stack>
           </Stack>
         </ThemeProvider>
       </body>

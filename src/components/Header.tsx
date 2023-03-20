@@ -14,6 +14,7 @@ export const Header = () => {
         paddingX: "24px",
         alignItems: "center",
         flexDirection: "row",
+        marginLeft: { xs: 0, sm: "96px", xl: "440px" },
       }}
       component="header"
     >

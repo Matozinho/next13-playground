@@ -1,54 +1,37 @@
 "use client";
-import {
-  Avatar,
-  Divider,
-  Drawer,
-  MenuLinks,
-  Stack,
-  Theme,
-  useMediaQuery,
-} from "@/components";
+import { Stack } from "@/components";
+import { ReactNode } from "react";
 
-const MenuDrawer = ({ children }: { children: React.ReactNode }) => {
+export const MenuWrapper = ({ children }: { children: ReactNode }) => {
   return (
-    <Drawer
-      variant="permanent"
-      sx={{
-        width: { xs: "60px", md: "300px", lg: "450px" },
-        flexShrink: 0,
-        [`& .MuiDrawer-paper`]: {
-          width: { xs: "60px", md: "300px", lg: "450px" },
-          boxSizing: "border-box",
+    <Stack
+      sx={({ breakpoints, palette }) => ({
+        backgroundColor: palette.background.paper,
+        mb: { xs: 16, sm: 0 },
+        mt: { xs: 16, sm: 0 },
+
+        [breakpoints.up("sm")]: {
+          top: 0,
+          width: 96,
+          position: "fixed",
+          height: "100vh",
+          margin: 0,
+          borderRight: `1px solid ${palette.divider}`,
         },
-      }}
+
+        [breakpoints.up("xl")]: {
+          width: 440,
+        }
+      })}
     >
-      {children}
-    </Drawer>
-  );
-};
-
-export const MenuWrapper = ({ id }: { id: string }) => {
-  const isMobile = useMediaQuery((theme: Theme) =>
-    theme.breakpoints.down("sm")
-  );
-
-  const Wrapper = isMobile ? Stack : MenuDrawer;
-
-  return (
-    <Wrapper>
       <Stack
         sx={{
           gap: "16px",
           alignItems: "center",
-          width: { xs: "60px", md: "300px", lg: "450px" },
         }}
       >
-        <Avatar />
-
-        <Divider sx={{ width: "100%" }} />
-
-        <MenuLinks id={id} />
+        {children}
       </Stack>
-    </Wrapper>
+    </Stack>
   );
 };
